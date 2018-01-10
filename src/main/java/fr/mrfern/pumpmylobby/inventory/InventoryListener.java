@@ -67,7 +67,12 @@ public class InventoryListener implements Listener {
 	
 	@EventHandler
 	public void OnPlayerUseNavItem(PlayerInteractEvent e) {
-
+		if(e.getPlayer().getGameMode().equals(GameMode.CREATIVE) | e.getPlayer().getGameMode().equals(GameMode.SPECTATOR))
+			return;
+		
+		if(e.getItem() == null)
+			return;
+		
 		e.setCancelled(true);
 		
 		ItemStack item = e.getItem();
