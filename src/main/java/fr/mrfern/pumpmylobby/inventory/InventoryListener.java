@@ -1,6 +1,7 @@
 package fr.mrfern.pumpmylobby.inventory;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Effect;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,6 +15,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class InventoryListener implements Listener {
 
@@ -25,6 +28,8 @@ public class InventoryListener implements Listener {
 		Player p = e.getPlayer();	
 		Inventory inv = p.getInventory();
 		//NavBarManager m = new NavBarManager(p);
+		
+		p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 999999 , 2));
 		
 		inv.clear();
 		
