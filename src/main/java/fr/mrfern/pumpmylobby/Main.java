@@ -4,8 +4,10 @@ import org.bukkit.Server;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.mrfern.pumpmylobby.inventory.InventoryListener;
+import fr.mrfern.pumpmylobby.inventory.NavBarManager;
 import fr.mrfern.pumpmylobby.porg.MisterPorg;
 import fr.mrfern.pumpmylobby.porg.PorgServerEvent;
+import fr.mrfern.pumpmylobby.server.ServerManager;
 
 
 public class Main extends JavaPlugin {
@@ -21,11 +23,16 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
+		// Init discord message start
+		new PorgServerEvent().OnServerStartEvent(new MisterPorg(this, "MzgyNTc4Mzg4MDY3NTQ5MTg0.DQdApA.zxYqzecf2pn3HMt6rRZGbcibggs","387326167499276292"));
 		
+		//inti bungee com
+		
+		// init config
 		saveDefaultConfig();
+			
 		
-		new PorgServerEvent().OnServerStartEvent(new MisterPorg(this, "MzgyNTc4Mzg4MDY3NTQ5MTg0.DQdApA.zxYqzecf2pn3HMt6rRZGbcibggs","387326167499276292"));	
-		
+		//event
 		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
 		
 	}
