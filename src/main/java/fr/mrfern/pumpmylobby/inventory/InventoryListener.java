@@ -6,7 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
@@ -60,6 +61,20 @@ public class InventoryListener implements Listener {
 			inv.setItem(6, navItemRagna2);
 		}else {
 			
+		}
+	}
+	
+	@EventHandler
+	public void OnDragItem(InventoryDragEvent e) {
+		if(!e.getWhoClicked().getGameMode().equals(GameMode.CREATIVE) & !e.getWhoClicked().getGameMode().equals(GameMode.SPECTATOR)) {
+			e.setCancelled(true);
+		}
+	}
+	
+	@EventHandler
+	public void OnInteractInv(InventoryClickEvent e) {
+		if(!e.getWhoClicked().getGameMode().equals(GameMode.CREATIVE) & !e.getWhoClicked().getGameMode().equals(GameMode.SPECTATOR)) {
+			e.setCancelled(true);
 		}
 	}
 	
