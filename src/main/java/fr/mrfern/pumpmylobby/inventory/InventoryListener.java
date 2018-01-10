@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -23,7 +24,7 @@ public class InventoryListener implements Listener {
 		
 		Player p = e.getPlayer();	
 		Inventory inv = p.getInventory();
-		NavBarManager m = new NavBarManager(p);
+		//NavBarManager m = new NavBarManager(p);
 		
 		inv.clear();
 		
@@ -60,6 +61,22 @@ public class InventoryListener implements Listener {
 			
 			inv.setItem(6, navItemRagna2);
 		}else {
+			
+		}
+	}
+	
+	@EventHandler
+	public void OnPlayerUseNavItem(PlayerInteractEvent e) {
+
+		e.setCancelled(true);
+		
+		ItemStack item = e.getItem();
+		ItemMeta itemMeta = item.getItemMeta();
+		String itemName = itemMeta.getDisplayName();
+		
+		System.out.println(itemName);
+		
+		if(itemName.equals("")) {
 			
 		}
 	}
