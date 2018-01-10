@@ -30,7 +30,8 @@ public class Main extends JavaPlugin {
 		
 		// init config
 		saveDefaultConfig();
-			
+		ServerManager.initConfig();
+		NavBarManager.initConfig();	
 		
 		//event
 		getServer().getPluginManager().registerEvents(new InventoryListener(), this);
