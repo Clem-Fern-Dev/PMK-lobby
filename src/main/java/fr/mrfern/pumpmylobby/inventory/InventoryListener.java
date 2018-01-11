@@ -1,9 +1,6 @@
 package fr.mrfern.pumpmylobby.inventory;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Effect;
 import org.bukkit.GameMode;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,11 +9,10 @@ import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
+
+import fr.mrfern.pumpmylobby.server.ServerManager;
 
 public class InventoryListener implements Listener {
 
@@ -25,11 +21,17 @@ public class InventoryListener implements Listener {
 		
 		System.out.println("PlayerJoinEvent call");
 		
-		Player p = e.getPlayer();	
-		Inventory inv = p.getInventory();
-		//NavBarManager m = new NavBarManager(p);
+		Player p = e.getPlayer();
+		NavBarManager navM = new NavBarManager(p);
+		MessageManager messM = new MessageManager(p);
 		
-		p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 999999 , 2));
+		messM.OnJoin(ServerManager.getManager(p));
+		
+		navM.OnJoin(ServerManager.getManager(p));
+		
+	}
+		
+		/*p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 999999 , 2));
 		
 		inv.clear();
 		
@@ -67,8 +69,7 @@ public class InventoryListener implements Listener {
 			inv.setItem(6, navItemRagna2);
 		}else {
 			
-		}
-	}
+		}*/
 	
 	@EventHandler
 	public void OnPlayerUseNavItem(PlayerInteractEvent e) {
