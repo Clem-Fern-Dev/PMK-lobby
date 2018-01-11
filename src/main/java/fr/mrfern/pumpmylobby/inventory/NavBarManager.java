@@ -1,11 +1,12 @@
 package fr.mrfern.pumpmylobby.inventory;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import fr.mrfern.pumpmylobby.server.ServerManager;
 
 public class NavBarManager {
 
@@ -21,18 +22,11 @@ public class NavBarManager {
 		
 	}
 	
-	public void giveItem(String serverName,int pos) {
-		if(player.hasPermission("server." + serverName)) {
-			ItemStack navItem = new ItemStack(Material.APPLE);
-			ItemMeta navItemMeta = navItem.getItemMeta();
-						
+	public void giveItem(String serverName,int pos,ItemStack item) {
+			ItemMeta navItemMeta = item.getItemMeta();						
 			navItemMeta.setDisplayName(ChatColor.LIGHT_PURPLE + serverName);
-			navItem.setItemMeta(navItemMeta);
-			
-			inv.setItem(pos, navItem);
-		}else {
-			
-		}		
+			item.setItemMeta(navItemMeta);			
+			inv.setItem(pos, item);		
 	}
 
 	public Inventory getInv() {
@@ -49,6 +43,10 @@ public class NavBarManager {
 
 	public void setPlayer(Player player) {
 		this.player = player;
+	}
+
+	public void OnJoin(ServerManager manager) {
+				
 	}
 
 }
