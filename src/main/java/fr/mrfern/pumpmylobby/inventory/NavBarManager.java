@@ -27,6 +27,8 @@ public class NavBarManager {
 	@SuppressWarnings("deprecation")
 	public void giveNavInv(ServerManager manager) {
 		
+		inv.clear();
+		
 		ItemStack item = null;
 		String serverName;
 		
