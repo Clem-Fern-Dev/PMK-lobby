@@ -1,25 +1,14 @@
 package fr.mrfern.pumpmylobby.server;
 
-import java.util.HashMap;
-
 import org.bukkit.entity.Player;
 
 public class ServerManager {
 	
 	private static ServerManager serverManager = new ServerManager();
-	private static HashMap<String, ServerData> serverHash;
 	private Player p;
 
 	public static void initConfig() {
 		
-	}
-
-	public static HashMap<String, ServerData> getServerHash() {
-		return serverHash;
-	}
-
-	public static void setServerHash(HashMap<String, ServerData> serverHash) {
-		ServerManager.serverHash = serverHash;
 	}
 
 	public static ServerManager getManager(Player p) {
