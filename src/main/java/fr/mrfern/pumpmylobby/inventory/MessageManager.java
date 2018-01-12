@@ -1,11 +1,8 @@
 package fr.mrfern.pumpmylobby.inventory;
 
-import java.util.Map.Entry;
-
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import fr.mrfern.pumpmylobby.server.ServerData;
 import fr.mrfern.pumpmylobby.server.ServerManager;
 
 public class MessageManager {
@@ -18,11 +15,6 @@ public class MessageManager {
 
 	public void OnJoin(ServerManager serverManager) {
 		player.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] Bonjour " + ChatColor.BOLD + ChatColor.YELLOW +player.getName());
-		for (Entry<String, ServerData> entry : ServerManager.getServerHash().entrySet()) {
-			if(serverManager.getServerState(entry.getKey())) {
-				
-			}
-		}
 	}
 
 	public Player getPlayer() {
