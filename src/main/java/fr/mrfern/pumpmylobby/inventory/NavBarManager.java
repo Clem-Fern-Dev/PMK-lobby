@@ -20,10 +20,6 @@ public class NavBarManager {
 		setPlayer(p);
 	}
 	
-	public static void initConfig() {
-		
-	}
-	
 	@SuppressWarnings("deprecation")
 	public void giveNavInv(ServerManager manager) {
 		
