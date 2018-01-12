@@ -1,8 +1,6 @@
 package fr.mrfern.pumpmylobby.inventory;
 
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,10 +17,7 @@ import fr.mrfern.pumpmylobby.server.ServerManager;
 public class InventoryListener implements Listener {
 
 	@EventHandler
-	public void OnJoinSetInv(PlayerJoinEvent e) {
-		
-		System.out.println("PlayerJoinEvent call");
-		
+	public void OnJoinSetInv(PlayerJoinEvent e) {		
 		Player p = e.getPlayer();
 		
 		NavBarManager navM = new NavBarManager(p);
