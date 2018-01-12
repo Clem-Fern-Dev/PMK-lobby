@@ -4,11 +4,6 @@ import java.util.HashMap;
 
 import org.bukkit.entity.Player;
 
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
-
-import fr.mrfern.pumpmylobby.Main;
-
 public class ServerManager {
 	
 	private static ServerManager serverManager = new ServerManager();

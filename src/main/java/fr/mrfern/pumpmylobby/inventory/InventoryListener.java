@@ -1,6 +1,8 @@
 package fr.mrfern.pumpmylobby.inventory;
 
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,13 +24,13 @@ public class InventoryListener implements Listener {
 		System.out.println("PlayerJoinEvent call");
 		
 		Player p = e.getPlayer();
+		
 		NavBarManager navM = new NavBarManager(p);
 		MessageManager messM = new MessageManager(p);
 		
 		messM.OnJoin(ServerManager.getManager(p));
 		
-		navM.OnJoin(ServerManager.getManager(p));
-		
+		navM.giveNavInv(ServerManager.getManager(p));		
 	}
 		
 		/*p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 999999 , 2));
