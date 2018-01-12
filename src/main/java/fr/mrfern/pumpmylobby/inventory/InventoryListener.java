@@ -27,46 +27,6 @@ public class InventoryListener implements Listener {
 		
 		navM.giveNavInv(ServerManager.getManager(p));		
 	}
-		
-		/*p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 999999 , 2));
-		
-		inv.clear();
-		
-		if(p.hasPermission("server.ragna1")) {
-			ItemStack navItemRagna1 = new ItemStack(Material.APPLE);
-			ItemMeta navItemRagna1Meta = navItemRagna1.getItemMeta();
-						
-			navItemRagna1Meta.setDisplayName(ChatColor.LIGHT_PURPLE + "PumpMyRagna#1");
-			navItemRagna1.setItemMeta(navItemRagna1Meta);
-			
-			inv.setItem(2, navItemRagna1);
-		}else {
-			
-		}
-		
-		if(p.hasPermission("server.dev")) {
-			ItemStack navItemDev = new ItemStack(Material.BEDROCK);
-			ItemMeta navItemDevMeta = navItemDev.getItemMeta();
-			
-			navItemDevMeta.setDisplayName(ChatColor.YELLOW + "development_server");
-			navItemDev.setItemMeta(navItemDevMeta);
-			
-			inv.setItem(4,navItemDev);
-		}else {
-			
-		}
-		
-		if(p.hasPermission("server.ragna2")) {
-			ItemStack navItemRagna2 = new ItemStack(Material.BREAD);
-			ItemMeta navItemRagna2Meta = navItemRagna2.getItemMeta();
-			
-			navItemRagna2Meta.setDisplayName(ChatColor.AQUA + "PumpMyRagna#2");
-			navItemRagna2.setItemMeta(navItemRagna2Meta);
-			
-			inv.setItem(6, navItemRagna2);
-		}else {
-			
-		}*/
 	
 	@EventHandler
 	public void OnPlayerUseNavItem(PlayerInteractEvent e) {
