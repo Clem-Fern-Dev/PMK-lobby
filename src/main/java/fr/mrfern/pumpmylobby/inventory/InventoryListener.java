@@ -44,11 +44,11 @@ public class InventoryListener implements Listener {
 		
 		System.out.println(itemName);
 		
-		if(itemName.equals("")) {
+		if(itemName.equals("§cPumpMyRagna#1") | itemName.equals("az")) {
 			
-		}else if(itemName.equals("")){
+		}else if(itemName.equals("§cPumpMyRagna#2") | itemName.equals("er")){
 			
-		}else if(itemName.equals("")){
+		}else if(itemName.equals("§6§kabcd§r§c SECRET §r§6§kabcd") | itemName.equals("ty")){
 			
 		}else {
 			e.getPlayer().getInventory().remove(item);
