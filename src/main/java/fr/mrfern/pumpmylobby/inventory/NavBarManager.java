@@ -52,7 +52,7 @@ public class NavBarManager {
 		
 		if(!player.hasPermission("server.dev")){
 			System.out.println("pas permissions");
-			serverName = ChatColor.MAGIC + "test";
+			serverName = ChatColor.GOLD + "" + ChatColor.MAGIC + "abcd" + ChatColor.RESET + "" + ChatColor.RED + " SECRET " + ChatColor.RESET + "" + ChatColor.GOLD + "" + ChatColor.MAGIC + "abcd" ;
 			item = new ItemStack(166); //barriere invisible
 		}else if(!manager.getServerState("dev")) {
 			System.out.println("");
