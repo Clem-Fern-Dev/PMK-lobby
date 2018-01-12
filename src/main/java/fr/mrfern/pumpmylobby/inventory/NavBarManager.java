@@ -30,7 +30,7 @@ public class NavBarManager {
 		ItemStack item = null;
 		String serverName;
 		
-		if(!player.hasPermission("server.ragna1") | manager.getServerState("ragna1")) {
+		if(!player.hasPermission("server.ragna1") | !manager.getServerState("ragna1")) {
 			System.out.println("set invi ragn1");
 			serverName = ChatColor.RED + "PumpMyRagna#1";
 			item = new ItemStack(166); //barriere invisible
