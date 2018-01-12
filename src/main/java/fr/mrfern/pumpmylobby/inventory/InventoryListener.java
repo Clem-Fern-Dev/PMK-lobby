@@ -46,6 +46,12 @@ public class InventoryListener implements Listener {
 		
 		if(itemName.equals("")) {
 			
+		}else if(itemName.equals("")){
+			
+		}else if(itemName.equals("")){
+			
+		}else {
+			e.getPlayer().getInventory().remove(item);
 		}
 	}
 	
