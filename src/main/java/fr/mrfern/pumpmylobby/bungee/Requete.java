@@ -29,14 +29,35 @@ public class Requete {
 		return new Requete(sen, "BungeeCord" , out.toByteArray());		
 	}
 	
-	public static void OnPreJoinReqOK(Player sen, String serverName , boolean serverState, BanData banData) throws Exception {
+	@SuppressWarnings("unused")
+	public static void OnPreJoinResp(Player sen, String serverName , boolean serverState, BanData banData) throws Exception {
 		// si offline alors erreur et return + update inv		
 		
 		if(serverState) {			
-			//sinon si ban alors return + send message ban + infos
-			
-			
-			
+			if(banData == null) {
+				
+				// donc pas ban
+				sen.sendMessage("Connection ok");
+				//ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
+				
+			}else {
+				// alors ban
+				String banOwner = banData.getAuthor();
+				String banOwnerUUID = banData.getAuthor_UUID();
+				
+				boolean global = banData.isGlobal();
+				
+				String raison = banData.getRaison();
+				
+				int day = banData.getDay(), hour = banData.getHour(), minute = banData.getMinute();
+				
+				int year_end = banData.getYear_end(), month_end = banData.getMonth_end(), day_end = banData.getDay_end(), hour_end = banData.getHour_end(), minute_end = banData.getMinute_end();
+				
+				// refus de la connection + envoie du message
+				sen.sendMessage("ban");	
+				if(InventoryListener.getPlayerList().contains(sen))
+					InventoryListener.getPlayerList().remove(sen);
+			}			
 		}else {
 			sen.sendMessage("");
 			if(InventoryListener.getPlayerList().contains(sen))
