@@ -59,7 +59,7 @@ public class InventoryListener implements Listener {
 		
 		Player p = e.getPlayer();
 		
-		System.out.println(itemName);
+		//System.out.println(itemName);
 		
 		if(itemName.equals("§cPumpMyRagna#1") | itemName.equals("§dPumpMyRagna#1")) {
 			if(!p.hasPermission("server.ragna1")) {
