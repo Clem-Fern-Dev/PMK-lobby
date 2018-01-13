@@ -2,6 +2,9 @@ package fr.mrfern.pumpmylobby.server;
 
 import org.bukkit.entity.Player;
 
+import fr.mrfern.pumpmylobby.Main;
+import fr.mrfern.pumpmylobby.bungee.Requete;
+
 public class ServerManager {
 	
 	private static ServerManager serverManager = new ServerManager();
@@ -28,6 +31,10 @@ public class ServerManager {
 
 	public void setP(Player p) {
 		this.p = p;
+	}
+
+	public void sendRequete(Requete Req) {
+		Req.getSender().sendPluginMessage(Main.getMain(), Req.getChannel(), Req.getBuff());
 	}
 
 }
