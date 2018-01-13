@@ -2,6 +2,9 @@ package fr.mrfern.pumpmylobby.bungee;
 
 import org.bukkit.entity.Player;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
+
 public class Requete {
 
 	private byte[] buff;
@@ -42,9 +45,14 @@ public class Requete {
 	}
 	
 	public static Requete ConnectReq(Player sen, String serverName) {
-		// génération du buffer de demande de connection		
 		
-		return new Requete(sen,serverName, "".getBytes());		
+		ByteArrayDataOutput out = ByteStreams.newDataOutput();
+		
+		out.writeUTF("Connect");
+		out.writeUTF(serverName);
+
+		
+		return new Requete(sen,serverName, out.toByteArray());		
 	}
 	
 	@Deprecated
