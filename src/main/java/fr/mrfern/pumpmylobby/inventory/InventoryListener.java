@@ -1,7 +1,7 @@
 package fr.mrfern.pumpmylobby.inventory;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -22,7 +22,7 @@ import fr.mrfern.pumpmylobby.server.ServerManager;
 
 public class InventoryListener implements Listener {
 
-	private static List<Player> playerList; 
+	private static List<Player> playerList = new ArrayList<Player>(); 
 	
 	@EventHandler
 	public void OnJoinSetInv(PlayerJoinEvent e) {		
@@ -73,7 +73,7 @@ public class InventoryListener implements Listener {
 			}else {
 				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna1 " + ChatColor.RESET + "" + ChatColor.YELLOW + "Envoie de la demande connection, attente d'une réponse ....");
 				// envoie de la requete
-				ServerManager.getManager(p).sendRequete(Requete.joinReq(p,"ragna1"));
+				ServerManager.getManager(p).sendRequete(Requete.ConnectReq(p, "ragna1"));
 			}
 		}else if(itemName.equals("§cPumpMyRagna#2") | itemName.equals("§dPumpMyRagna#2")){
 			if(!p.hasPermission("server.ragna2")) {
