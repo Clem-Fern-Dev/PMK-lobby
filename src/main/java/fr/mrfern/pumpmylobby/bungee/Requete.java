@@ -20,7 +20,12 @@ public class Requete {
 	public static Requete PrejoinReq(Player sen,String serverName) {
 		// génération du buffer	de demande si en ligne ou non, et si ban
 		
-		return new Requete(sen, "BungeeCord" , "".getBytes());		
+		ByteArrayDataOutput out = ByteStreams.newDataOutput();
+		
+		out.writeUTF("Connect");
+		out.writeUTF(serverName);
+		
+		return new Requete(sen, "BungeeCord" , out.toByteArray());		
 	}
 	
 	public static void OnPreJoinReqOK(Player sen) {
@@ -33,8 +38,12 @@ public class Requete {
 	
 	public static Requete joinReq(Player sen, String serverName) {
 		// génération du buffer de demande si en ligne ou non et get nombre de joueur		
+		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		
-		return new Requete(sen,serverName, "".getBytes());			
+		out.writeUTF("Connect");
+		out.writeUTF(serverName);
+		
+		return new Requete(sen,"BungeeCord", out.toByteArray());			
 	}
 	
 	public static void OnJoinReqOK() {
@@ -54,7 +63,7 @@ public class Requete {
 		out.writeUTF(serverName);
 
 		
-		return new Requete(sen,serverName, out.toByteArray());		
+		return new Requete(sen,"BungeeCord", out.toByteArray());		
 	}
 	
 	@Deprecated
