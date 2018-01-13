@@ -7,25 +7,40 @@ public class Requete {
 	private byte[] buf;
 	private Player sender;
 	
-	public static Requete PrejoinReq(Player sen) {
+	public Requete(Player sen, String serverName, byte[] bytes) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static Requete PrejoinReq(Player sen,String serverName) {
 		
 		
 		
-		return new Requete();		
+		return new Requete(sen,serverName, "".getBytes());		
 	}
 	
 	public static void OnPreJoinReqOK(Player sen) {
 		
 	}
 	
-	public static Requete joinReq(Player sen) {
+	public static Requete joinReq(Player sen, String serverName) {
 		
 		
 		
-		return new Requete();		
+		return new Requete(sen,serverName, "".getBytes());			
 	}
 	
 	public static void OnJoinReqOK() {
+		
+	}
+	
+	public static Requete ConnectReq(Player sen, String serverName) {
+		
+		
+		
+		return new Requete(sen,serverName, "".getBytes());		
+	}
+	
+	public static void OnConnectReqOk(Player sen, String serverName) {
 		
 	}
 
