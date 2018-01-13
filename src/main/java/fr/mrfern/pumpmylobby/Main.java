@@ -5,10 +5,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.mrfern.pumpmylobby.bungee.MessagingInput;
 import fr.mrfern.pumpmylobby.inventory.InventoryListener;
-import fr.mrfern.pumpmylobby.inventory.NavBarManager;
 import fr.mrfern.pumpmylobby.porg.MisterPorg;
 import fr.mrfern.pumpmylobby.porg.PorgServerEvent;
-import fr.mrfern.pumpmylobby.server.ServerManager;
 
 
 public class Main extends JavaPlugin {
