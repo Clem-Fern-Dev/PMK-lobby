@@ -5,6 +5,8 @@ import org.bukkit.entity.Player;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 
+import fr.mrfern.pumpmylobby.inventory.InventoryListener;
+
 public class Requete {
 
 	private byte[] buff;
@@ -19,21 +21,27 @@ public class Requete {
 
 	public static Requete PrejoinReq(Player sen,String serverName) {
 		// génération du buffer	de demande si en ligne ou non, et si ban
-		
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		
-		out.writeUTF("Connect");
+		out.writeUTF("prejoinrequest");
 		out.writeUTF(serverName);
 		
 		return new Requete(sen, "BungeeCord" , out.toByteArray());		
 	}
 	
-	public static void OnPreJoinReqOK(Player sen) {
-		// si offline alors erreur et return + update inv
+	public static void OnPreJoinReqOK(Player sen, String serverName , boolean serverState, BanData banData) throws Exception {
+		// si offline alors erreur et return + update inv		
 		
-		//sinon si ban alors return + send message ban + infos
-		
-		// sinon check nombre de joueurs avec JoinReq
+		if(serverState) {			
+			//sinon si ban alors return + send message ban + infos
+			
+			
+			
+		}else {
+			sen.sendMessage("");
+			if(InventoryListener.getPlayerList().contains(sen))
+				InventoryListener.getPlayerList().remove(sen);	
+		}
 	}
 	
 	public static Requete joinReq(Player sen, String serverName) {
