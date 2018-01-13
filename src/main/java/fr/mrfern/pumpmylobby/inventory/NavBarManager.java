@@ -29,37 +29,30 @@ public class NavBarManager {
 		String serverName;
 		
 		if(!player.hasPermission("server.ragna1") | !manager.getServerState("ragna1")) {
-			System.out.println("set invi ragn1");
 			serverName = ChatColor.RED + "PumpMyRagna#1";
 			item = new ItemStack(166); //barriere invisible
 		}else {
-			System.out.println("ragna1");
 			serverName = ChatColor.LIGHT_PURPLE + "PumpMyRagna#1";
 			item = new ItemStack(Material.APPLE);			
 		}		
 		giveItem(serverName, 2, item);
 		
 		if(!player.hasPermission("server.ragna2") | !manager.getServerState("ragna2")) {
-			System.out.println("set invi ragn2");
 			serverName = ChatColor.RED + "PumpMyRagna#2";
 			item = new ItemStack(166); //barriere invisible
 		}else {
-			System.out.println("ragna2");
 			serverName = ChatColor.LIGHT_PURPLE + "PumpMyRagna#2";
 			item = new ItemStack(Material.BREAD);			
 		}		
 		giveItem(serverName, 6, item);
 		
 		if(!player.hasPermission("server.dev")){
-			System.out.println("pas permissions");
 			serverName = ChatColor.GOLD + "" + ChatColor.MAGIC + "abcd" + ChatColor.RESET + "" + ChatColor.RED + " SECRET " + ChatColor.RESET + "" + ChatColor.GOLD + "" + ChatColor.MAGIC + "abcd" ;
 			item = new ItemStack(166); //barriere invisible
 		}else if(!manager.getServerState("dev")) {
-			System.out.println("");
 			serverName = ChatColor.RED + "Serveur developpement";
 			item = new ItemStack(166); //barriere invisible
 		}else {
-			System.out.println("");
 			serverName = ChatColor.GREEN + "Serveur developpement";
 			item = new ItemStack(Material.APPLE);			
 		}		
