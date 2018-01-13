@@ -61,7 +61,7 @@ public class InventoryListener implements Listener {
 		
 		System.out.println(itemName);
 		
-		if(itemName.equals("§cPumpMyRagna#1") | itemName.equals("§aPumpMyRagna#1")) {
+		if(itemName.equals("§cPumpMyRagna#1") | itemName.equals("§dPumpMyRagna#1")) {
 			if(!p.hasPermission("server.ragna1")) {
 				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna1 " + ChatColor.RESET + "" + ChatColor.RED + "Envoie de la demande connection impossible. Vous n'avez pas la permissions de rejoindre !");
 				if(playerList.contains(e.getPlayer()))
@@ -87,7 +87,7 @@ public class InventoryListener implements Listener {
 			}else {
 				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna2 " + ChatColor.RESET + "" + ChatColor.YELLOW + "Envoie de la demande connection, attente d'une réponse ....");
 				// envoie de la requete
-				ServerManager.getManager(p).sendRequete(Requete.joinReq(p,"ragna2"));
+				//ServerManager.getManager(p).sendRequete(Requete.joinReq(p,"ragna2"));
 			}
 			
 		}else if(itemName.equals("§6§kabcd§r§c SECRET §r§6§kabcd") | itemName.equals("§cServeur developpement") | itemName.equals("§aServeur developpement")){
@@ -102,7 +102,7 @@ public class InventoryListener implements Listener {
 			}else {
 				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna1 " + ChatColor.RESET + "" + ChatColor.YELLOW + "Envoie de la demande connection, attente d'une réponse ....");
 				// envoie de la requete
-				ServerManager.getManager(p).sendRequete(Requete.joinReq(p,"dev"));
+				//ServerManager.getManager(p).sendRequete(Requete.joinReq(p,"dev"));
 			}
 		}else {
 			e.getPlayer().getInventory().remove(item);
