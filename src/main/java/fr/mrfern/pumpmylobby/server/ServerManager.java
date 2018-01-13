@@ -34,7 +34,7 @@ public class ServerManager {
 	}
 
 	public void sendRequete(Requete Req) {
-		Req.getSender().sendPluginMessage(Main.getMain(), Req.getChannel(), Req.getBuff());
+		p.sendPluginMessage(Main.getMain(), Req.getChannel(), Req.getBuff());
 	}
 
 }
