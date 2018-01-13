@@ -22,7 +22,7 @@ public class ServerManager {
 	public boolean getServerState(String serverName) {
 		
 		
-		return false;
+		return true;
 	}
 
 	public Player getP() {
