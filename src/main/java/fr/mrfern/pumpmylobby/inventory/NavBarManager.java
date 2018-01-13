@@ -54,7 +54,7 @@ public class NavBarManager {
 			item = new ItemStack(166); //barriere invisible
 		}else {
 			serverName = ChatColor.GREEN + "Serveur developpement";
-			item = new ItemStack(Material.APPLE);			
+			item = new ItemStack(Material.BEDROCK);			
 		}		
 		giveItem(serverName, 4, item);
 		
