@@ -11,8 +11,10 @@ public class Requete {
 	private Player sender;
 	private String channel;
 	
-	public Requete(Player sen, String serverName, byte[] bytes) {
-		// TODO Auto-generated constructor stub
+	public Requete(Player sen, String chan, byte[] bytes) {
+		buff = bytes;
+		sender = sen;
+		channel = chan;		
 	}
 
 	public static Requete PrejoinReq(Player sen,String serverName) {
