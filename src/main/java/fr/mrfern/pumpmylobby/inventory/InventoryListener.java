@@ -1,5 +1,6 @@
 package fr.mrfern.pumpmylobby.inventory;
 
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -42,14 +43,35 @@ public class InventoryListener implements Listener {
 		ItemMeta itemMeta = item.getItemMeta();
 		String itemName = itemMeta.getDisplayName();
 		
+		Player p = e.getPlayer();
+		
 		System.out.println(itemName);
 		
 		if(itemName.equals("§cPumpMyRagna#1") | itemName.equals("az")) {
-			
+			if(p.hasPermission("server.ragna1")) {
+				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna1 " + ChatColor.RESET + "" + ChatColor.RED + "Envoie de la demande connection impossible. Vous n'avez pas la permissions de rejoindre !");
+			}else if(ServerManager.getManager(p).getServerState("ragna1")) {
+				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna1 " + ChatColor.RESET + "" + ChatColor.RED + "Envoie de la demande connection impossible, serveur non disponible !");
+			}else {
+				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna1 " + ChatColor.RESET + "" + ChatColor.YELLOW + "Envoie de la demande connection, attente d'une réponse ....");
+			}
 		}else if(itemName.equals("§cPumpMyRagna#2") | itemName.equals("er")){
+			if(p.hasPermission("server.ragna2")) {
+				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna2 " + ChatColor.RESET + "" + ChatColor.RED + "Envoie de la demande connection impossible. Vous n'avez pas la permissions de rejoindre !");
+			}else if(ServerManager.getManager(p).getServerState("ragna2")) {
+				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna2 " + ChatColor.RESET + "" + ChatColor.RED + "Envoie de la demande connection impossible, serveur non disponible !");
+			}else {
+				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna2 " + ChatColor.RESET + "" + ChatColor.YELLOW + "Envoie de la demande connection, attente d'une réponse ....");
+			}
 			
 		}else if(itemName.equals("§6§kabcd§r§c SECRET §r§6§kabcd") | itemName.equals("ty")){
-			
+			if(p.hasPermission("server.dev")) {
+				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + "" + ChatColor.RESET + "" + ChatColor.MAGIC + "abcd " + ChatColor.RESET + "" + ChatColor.RED + "" + ChatColor.UNDERLINE + "Tentative d'accès à une contenue classé secret " + ChatColor.RESET + "" + ChatColor.MAGIC + "abcd");
+			}else if(ServerManager.getManager(p).getServerState("dev")) {
+				p.sendMessage(ChatColor.RED + "Serveur offline ou indisponible");
+			}else {
+				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna1 " + ChatColor.RESET + "" + ChatColor.YELLOW + "Envoie de la demande connection, attente d'une réponse ....");
+			}
 		}else {
 			e.getPlayer().getInventory().remove(item);
 		}
