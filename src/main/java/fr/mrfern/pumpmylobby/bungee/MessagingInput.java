@@ -25,8 +25,18 @@ public class MessagingInput implements PluginMessageListener {
 		    	if(!serverState) {
 		    		System.out.println("serverstate false");
 		    		Requete.OnPreJoinResp(player, serverName, serverState, null);
+		    	}else {
+		    		boolean isBan = in.readBoolean();
+		    		if(isBan) {
+		    			
+		    			BanData banData = new BanData();
+		    			banData.setAuthor(in.readUTF());
+		    			banData.setAuthor_UUID(in.readUTF());		    			
+		    			Requete.OnPreJoinResp(player, serverName, serverState, banData);
+		    		}else {
+		    			Requete.OnPreJoinResp(player, serverName, true, null);
+		    		}
 		    	}
-		    	System.out.println("serverstate true");
 		    	
 		    }
 			
