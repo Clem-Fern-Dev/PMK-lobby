@@ -30,7 +30,7 @@ public class Requete {
 	}
 	
 	@SuppressWarnings("unused")
-	public static void OnPreJoinResp(Player sen, String serverName , boolean serverState, BanData banData) throws Exception {
+	public static void OnPreJoinResp(Player sen, String serverName , boolean serverState, BanData banData) {
 		// si offline alors erreur et return + update inv		
 		
 		if(serverState) {			
@@ -59,7 +59,7 @@ public class Requete {
 					InventoryListener.getPlayerList().remove(sen);
 			}			
 		}else {
-			sen.sendMessage("");
+			sen.sendMessage("offline");
 			if(InventoryListener.getPlayerList().contains(sen))
 				InventoryListener.getPlayerList().remove(sen);	
 		}
