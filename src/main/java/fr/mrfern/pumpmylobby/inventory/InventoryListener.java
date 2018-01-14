@@ -73,7 +73,7 @@ public class InventoryListener implements Listener {
 			}else {
 				p.sendMessage(ChatColor.GOLD + "[ PumpMyLobby ] " + ChatColor.RESET + "" + ChatColor.ITALIC + "" + ChatColor.AQUA + "ragna1 " + ChatColor.RESET + "" + ChatColor.YELLOW + "Envoie de la demande connection, attente d'une réponse ....");
 				// envoie de la requete
-				ServerManager.getManager(p).sendRequete(Requete.ConnectReq(p, "ragna1"));
+				ServerManager.getManager(p).sendRequete(Requete.PrejoinReq(p, "ragna1"));
 			}
 		}else if(itemName.equals("§cPumpMyRagna#2") | itemName.equals("§dPumpMyRagna#2")){
 			if(!p.hasPermission("server.ragna2")) {
