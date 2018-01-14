@@ -33,7 +33,8 @@ public class Requete {
 	public static void OnPreJoinResp(Player sen, String serverName , boolean serverState, BanData banData) {
 		// si offline alors erreur et return + update inv		
 		
-		if(serverState) {			
+		if(serverState) {	
+			sen.sendMessage("online");
 			if(banData == null) {
 				
 				// donc pas ban
