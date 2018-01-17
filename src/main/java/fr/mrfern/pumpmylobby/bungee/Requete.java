@@ -6,6 +6,7 @@ import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 
 import fr.mrfern.pumpmylobby.inventory.InventoryListener;
+import fr.mrfern.pumpmylobby.server.ServerManager;
 
 public class Requete {
 
@@ -39,7 +40,7 @@ public class Requete {
 				
 				// donc pas ban
 				sen.sendMessage("Connection ok");
-				//ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
+				ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
 				
 			}else {
 				// alors ban
@@ -55,14 +56,17 @@ public class Requete {
 				int year_end = banData.getYear_end(), month_end = banData.getMonth_end(), day_end = banData.getDay_end(), hour_end = banData.getHour_end(), minute_end = banData.getMinute_end();
 				
 				// refus de la connection + envoie du message
-				sen.sendMessage("ban");	
+				sen.sendMessage("ban");		// Message à mettre , il faut dire que la requète de connexion n'a pas aboutti pour le serveur demandé, car le joueur est ban par author (UUID de l'author ), pendant J/H/M , date de déban
 				if(InventoryListener.getPlayerList().contains(sen))
 					InventoryListener.getPlayerList().remove(sen);
 			}			
 		}else {
-			sen.sendMessage("offline");
+			sen.sendMessage("offline");		// Message à mettre, il faut dire que la requère de connexion n'a pas aboutti car le serveur demandé n'est pas disponible
 			if(InventoryListener.getPlayerList().contains(sen))
 				InventoryListener.getPlayerList().remove(sen);	
+			
+			// update inventaire
+			
 		}
 	}
 	
@@ -70,7 +74,7 @@ public class Requete {
 		// génération du buffer de demande si en ligne ou non et get nombre de joueur		
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		
-		out.writeUTF("Connect");
+		out.writeUTF("joinreq");
 		out.writeUTF(serverName);
 		
 		return new Requete(sen,"BungeeCord", out.toByteArray());			
