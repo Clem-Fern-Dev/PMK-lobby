@@ -35,11 +35,9 @@ public class Requete {
 		// si offline alors erreur et return + update inv		
 		
 		if(serverState) {	
-			sen.sendMessage("online");
 			if(banData == null) {
 				
-				// donc pas ban
-				sen.sendMessage("Connection ok");
+				// donc pas ban, envoie de la requete suivante
 				ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
 				
 			}else {
@@ -80,7 +78,7 @@ public class Requete {
 		return new Requete(sen,"BungeeCord", out.toByteArray());			
 	}
 	
-	public static void OnJoinReqOK() {
+	public static void OnJoinReqOK(Player player, String serverName, boolean serverState, int readInt) {
 		// si offline alors erreur et return + update inv
 		
 		// sinon check si autorisé à rejoindre avec le nombre de joueur
@@ -132,5 +130,4 @@ public class Requete {
 	public void setChannel(String channel) {
 		this.channel = channel;
 	}
-	
 }
