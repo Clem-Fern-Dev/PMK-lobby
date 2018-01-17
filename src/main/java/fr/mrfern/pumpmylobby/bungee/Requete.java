@@ -78,13 +78,42 @@ public class Requete {
 		return new Requete(sen,"BungeeCord", out.toByteArray());			
 	}
 	
-	public static void OnJoinReqOK(Player player, String serverName, boolean serverState, int readInt) {
-		// si offline alors erreur et return + update inv
+	public static void OnJoinResp(Player sen, String serverName, boolean serverState, int plyNb) {
 		
-		// sinon check si autorisé à rejoindre avec le nombre de joueur
-		
-		// si autorisé alors connect avec ConnectReq
-		
+		if(serverState) {	
+			if(plyNb > 20) {
+				// besoin d'etre staff pour rejoindre
+				if(sen.hasPermission("server.staffslot")) {
+					// connection
+					ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
+				}else {
+					//refus
+					sen.sendMessage("refus besoin de la permissions staffslot");
+					if(InventoryListener.getPlayerList().contains(sen))
+						InventoryListener.getPlayerList().remove(sen);
+				}
+			}else if(plyNb > 14) {
+				// besoin d'un grade pour rejoindre
+				if(sen.hasPermission("server.premiumslot") | sen.hasPermission("server.staffslot")) {
+					// connection
+					ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
+				}else {
+					// refus
+					sen.sendMessage("refus besoin de la permissions premiumslot ou staffslot");
+					if(InventoryListener.getPlayerList().contains(sen))
+						InventoryListener.getPlayerList().remove(sen);
+				}
+			}else {
+				// connection
+				ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));				
+			}
+		}else {
+			sen.sendMessage("offline");		// Message à mettre, il faut dire que la requère de connexion n'a pas aboutti car le serveur demandé n'est pas disponible
+			if(InventoryListener.getPlayerList().contains(sen))
+				InventoryListener.getPlayerList().remove(sen);	
+			
+			// update inventaire	
+		}		
 	}
 	
 	public static Requete ConnectReq(Player sen, String serverName) {
@@ -93,7 +122,9 @@ public class Requete {
 		
 		out.writeUTF("Connect");
 		out.writeUTF(serverName);
-
+		
+		if(InventoryListener.getPlayerList().contains(sen))
+			InventoryListener.getPlayerList().remove(sen);
 		
 		return new Requete(sen,"BungeeCord", out.toByteArray());		
 	}
