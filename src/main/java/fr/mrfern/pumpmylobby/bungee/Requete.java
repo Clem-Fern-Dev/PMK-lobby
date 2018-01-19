@@ -79,7 +79,6 @@ public class Requete {
 	}
 	
 	public static void OnJoinResp(Player sen, String serverName, boolean serverState, int plyNb) {
-		
 		if(serverState) {	
 			if(plyNb > 20) {
 				// besoin d'etre staff pour rejoindre
