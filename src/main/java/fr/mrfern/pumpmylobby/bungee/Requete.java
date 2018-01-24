@@ -36,9 +36,11 @@ public class Requete {
 		
 		if(serverState) {	
 			if(banData == null) {
-				
+				sen.sendMessage("non ban requete joinReq");
 				// donc pas ban, envoie de la requete suivante
-				ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
+				//ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
+				if(InventoryListener.getPlayerList().contains(sen))
+					InventoryListener.getPlayerList().remove(sen);
 				
 			}else {
 				// alors ban
