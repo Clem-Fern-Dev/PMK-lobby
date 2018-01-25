@@ -47,16 +47,16 @@ public class Requete {
 				String banOwner = banData.getAuthor();
 				String banOwnerUUID = banData.getAuthor_UUID();
 				
-				boolean global = banData.isGlobal();
+				/*boolean global = banData.isGlobal();
 				
 				String raison = banData.getRaison();
 				
 				int day = banData.getDay(), hour = banData.getHour(), minute = banData.getMinute();
 				
 				int year_end = banData.getYear_end(), month_end = banData.getMonth_end(), day_end = banData.getDay_end(), hour_end = banData.getHour_end(), minute_end = banData.getMinute_end();
-				
+				*/
 				// refus de la connection + envoie du message
-				sen.sendMessage("ban");		// Message à mettre , il faut dire que la requète de connexion n'a pas aboutti pour le serveur demandé, car le joueur est ban par author (UUID de l'author ), pendant J/H/M , date de déban
+				sen.sendMessage("ban  " + banOwner + "  " + banOwnerUUID);		// Message à mettre , il faut dire que la requète de connexion n'a pas aboutti pour le serveur demandé, car le joueur est ban par author (UUID de l'author ), pendant J/H/M , date de déban
 				if(InventoryListener.getPlayerList().contains(sen))
 					InventoryListener.getPlayerList().remove(sen);
 			}			
