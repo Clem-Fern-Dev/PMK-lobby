@@ -1,6 +1,11 @@
 package fr.mrfern.pumpmylobby;
 
+import org.bukkit.Location;
 import org.bukkit.Server;
+import org.bukkit.Server.Spigot;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Creeper;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
@@ -9,6 +14,7 @@ import fr.mrfern.pumpmylobby.bungee.MessagingInput;
 import fr.mrfern.pumpmylobby.inventory.InventoryListener;
 import fr.mrfern.pumpmylobby.porg.MisterPorg;
 import fr.mrfern.pumpmylobby.porg.PorgServerEvent;
+import fr.mrfern.pumpmylobby.server.NoIA;
 
 
 public class Main extends JavaPlugin {
@@ -38,11 +44,25 @@ public class Main extends JavaPlugin {
 	    this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new MessagingInput());
 	    
 	    getServer().getPluginManager().registerEvents(new InventoryListener(), this);
+	    
+	    Location loc = new Location(this.getServer().getWorld("spawn"), -537.5, 29, 1372.5);
+	    loc.setYaw(0);
+	    loc.setPitch(0);
 		
+	    ArmorStand armorStand = (ArmorStand) this.getServer().getWorld("spawn").spawnEntity(loc, EntityType.ARMOR_STAND);	
+	    Creeper creeper = (Creeper) this.getServer().getWorld("spawn").spawnEntity(loc, EntityType.CREEPER);
+	    NoIA.setAiEnabled(creeper, false);
+	    //armorStand.setPassenger(creeper);
+	    armorStand.setCustomNameVisible(true);
+	    armorStand.setGravity(false);
+	    armorStand.setHealth(20);
+	    Annimation.initTask(this, armorStand);
+	    
 	}
 	
 	@Override
 	public void onDisable() {
+		Annimation.getArmorS().remove();
 		new PorgServerEvent().OnServerStopEvent(new MisterPorg(this, "MzgyNTc4Mzg4MDY3NTQ5MTg0.DQdApA.zxYqzecf2pn3HMt6rRZGbcibggs","387326167499276292"));
 	}
 	
