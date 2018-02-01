@@ -30,7 +30,6 @@ public class Requete {
 		return new Requete(sen, "BungeeCord" , out.toByteArray());		
 	}
 	
-	@SuppressWarnings("unused")
 	public static void OnPreJoinResp(Player sen, String serverName , boolean serverState, BanData banData) {
 		// si offline alors erreur et return + update inv		
 		
@@ -38,7 +37,7 @@ public class Requete {
 			if(banData == null) {
 				sen.sendMessage("non ban requete joinReq");
 				// donc pas ban, envoie de la requete suivante
-				//ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
+				ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
 				if(InventoryListener.getPlayerList().contains(sen))
 					InventoryListener.getPlayerList().remove(sen);
 				
