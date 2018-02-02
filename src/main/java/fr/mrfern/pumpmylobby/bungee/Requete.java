@@ -37,7 +37,7 @@ public class Requete {
 			if(banData == null) {
 				sen.sendMessage("non ban requete joinReq");
 				// donc pas ban, envoie de la requete suivante
-				ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
+				//ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
 				if(InventoryListener.getPlayerList().contains(sen))
 					InventoryListener.getPlayerList().remove(sen);
 				
@@ -69,7 +69,7 @@ public class Requete {
 		}
 	}
 	
-	public static Requete joinReq(Player sen, String serverName) {
+	/*public static Requete joinReq(Player sen, String serverName) {
 		// génération du buffer de demande si en ligne ou non et get nombre de joueur		
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		
@@ -77,10 +77,10 @@ public class Requete {
 		out.writeUTF(serverName);
 		
 		return new Requete(sen,"BungeeCord", out.toByteArray());			
-	}
+	}*/
 	
-	public static void OnJoinResp(Player sen, String serverName, boolean serverState, int plyNb) {
-		if(serverState) {	
+	/*public static void OnJoinResp(Player sen, String serverName, boolean serverState, int plyNb) {
+		/*if(serverState) {	
 			if(plyNb > 20) {
 				// besoin d'etre staff pour rejoindre
 				if(sen.hasPermission("server.staffslot")) {
@@ -113,10 +113,12 @@ public class Requete {
 				InventoryListener.getPlayerList().remove(sen);	
 			
 			// update inventaire	
-		}		
-	}
+		}	
+		
+		ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
+	}*/
 	
-	public static Requete ConnectReq(Player sen, String serverName) {
+	/*public static Requete ConnectReq(Player sen, String serverName) {
 		
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		
@@ -127,7 +129,7 @@ public class Requete {
 			InventoryListener.getPlayerList().remove(sen);
 		
 		return new Requete(sen,"BungeeCord", out.toByteArray());		
-	}
+	}*/
 	
 	@Deprecated
 	public static void OnConnectReqOk(Player sen, String serverName) {

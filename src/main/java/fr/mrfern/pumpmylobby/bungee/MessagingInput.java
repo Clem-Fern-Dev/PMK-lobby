@@ -59,9 +59,9 @@ public class MessagingInput implements PluginMessageListener {
 		    	
 		    	if(!serverState) {
 		    		// Serveur non dispo
-		    		Requete.OnJoinResp(player, serverName, false, 0);
+		    		//Requete.OnJoinResp(player, serverName, false, 0);
 		    	}else {
-		    		Requete.OnJoinResp(player, serverName, true, in.readInt());
+		    		//Requete.OnJoinResp(player, serverName, true, in.readInt());
 		    	}
 		    }
 		}		
