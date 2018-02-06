@@ -15,6 +15,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import fr.mrfern.pumpmylobby.Main;
 import fr.mrfern.pumpmylobby.bungee.Requete;
@@ -28,6 +31,7 @@ public class InventoryListener implements Listener {
 	public void OnJoinSetInv(PlayerJoinEvent e) {		
 		Player p = e.getPlayer();
 		
+		p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 99999999, 12, true), true);
 		NavBarManager navM = new NavBarManager(p);
 		MessageManager messM = new MessageManager(p);
 		
