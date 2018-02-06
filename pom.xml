@@ -39,6 +39,7 @@
     		<artifactId>JDA</artifactId>
     		<version>3.3.0_260</version>
 		</dependency>
+		
 	</dependencies>
 	
 	<build>
