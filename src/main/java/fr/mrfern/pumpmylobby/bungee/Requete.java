@@ -1,5 +1,6 @@
 package fr.mrfern.pumpmylobby.bungee;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import com.google.common.io.ByteArrayDataOutput;
@@ -21,7 +22,7 @@ public class Requete {
 	}
 
 	public static Requete PrejoinReq(Player sen,String serverName) {
-		// génération du buffer	de demande si en ligne ou non, et si ban
+		// gÃ©nÃ©ration du buffer	de demande si en ligne ou non, et si ban
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		
 		out.writeUTF("prejoinrequest");
@@ -31,92 +32,76 @@ public class Requete {
 	}
 	
 	public static void OnPreJoinResp(Player sen, String serverName , BanData banData) {
-		// si offline alors erreur et return + update inv		
-		
-		//if(serverState) {	
-			if(banData == null) {
-				sen.sendMessage("non ban requete joinReq");
-				// donc pas ban, envoie de la requete suivante
-				//ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
-				if(InventoryListener.getPlayerList().contains(sen))
-					InventoryListener.getPlayerList().remove(sen);
+		if(banData == null) {
+			//sen.sendMessage("non ban requete joinReq");
+			// donc pas ban, envoie de la requete suivante
+			ServerManager.getManager(sen).sendRequete(Requete.joinReq(sen, serverName));
+			if(InventoryListener.getPlayerList().contains(sen))
+				InventoryListener.getPlayerList().remove(sen);
 				
-			}else {
-				// alors ban
-				String banOwner = banData.getAuthor();
-				String banOwnerUUID = banData.getAuthor_UUID();
+		}else {
+			// alors ban
+			String banOwner = banData.getAuthor();
+			String banOwnerUUID = banData.getAuthor_UUID();
 				
-				String raison = banData.getRaison();
+			String raison = banData.getRaison();
 				
-				int day = banData.getDay(), hour = banData.getHour(), minute = banData.getMinute();
+			int day = banData.getDay(), hour = banData.getHour(), minute = banData.getMinute();
 				
-				int year_end = banData.getYear_end(), month_end = banData.getMonth_end(), day_end = banData.getDay_end(), hour_end = banData.getHour_end(), minute_end = banData.getMinute_end();
+			int year_end = banData.getYear_end(), month_end = banData.getMonth_end(), day_end = banData.getDay_end(), hour_end = banData.getHour_end(), minute_end = banData.getMinute_end();
 				
-				// refus de la connection + envoie du message
-				sen.sendMessage("ban  " + banOwner + "  " + banOwnerUUID + " " + raison);		// Message à mettre , il faut dire que la requète de connexion n'a pas aboutti pour le serveur demandé, car le joueur est ban par author (UUID de l'author ), pendant J/H/M , date de déban
-				if(InventoryListener.getPlayerList().contains(sen))
-					InventoryListener.getPlayerList().remove(sen);
-			}			
-		//}else {
-		//	sen.sendMessage("offline");		// Message à mettre, il faut dire que la requère de connexion n'a pas aboutti car le serveur demandé n'est pas disponible
-		//	if(InventoryListener.getPlayerList().contains(sen))
-		//		InventoryListener.getPlayerList().remove(sen);	
-			
-			// update inventaire
-			
-		//}
+			// refus de la connection + envoie du message
+			// Message Ã  mettre , il faut dire que la requÃ¨te de connexion n'a pas aboutti pour le serveur demandÃ©, car le joueur est ban par author (UUID de l'author ), pendant J/H/M , date de dÃ©ban
+			sen.sendMessage(ChatColor.RED + "â•‘  Demande de connexion annulÃ©e ! Vous etes banni de ce serveur :");
+			sen.sendMessage(ChatColor.RED + "â•‘  Bannisseur : " + ChatColor.GOLD + "" + ChatColor.BOLD + banOwner + " " + ChatColor.RESET + "" + ChatColor.RED + "( " + ChatColor.GOLD + banOwnerUUID + " " + ChatColor.RED + ")" );
+			sen.sendMessage(ChatColor.RED + "â•‘  Raison : " + ChatColor.DARK_RED + raison);
+			sen.sendMessage(ChatColor.RED + "â•‘  Temps de bannissement : " + ChatColor.AQUA + day + ChatColor.DARK_AQUA + "D:" + ChatColor.AQUA + hour + ChatColor.DARK_AQUA + "H:"+ ChatColor.AQUA + minute + ChatColor.DARK_AQUA + "M " + ChatColor.DARK_AQUA + "( " + year_end + "\\" + month_end + "\\" + day_end + "\\" + hour_end + "\\" + minute_end + " )" );
+			sen.sendMessage(ChatColor.RED + "â•‘  Demande de dÃ©bannissment : http://pumpmykins.eu/forum/forumdisplay.php?fid=8");
+			if(InventoryListener.getPlayerList().contains(sen))
+				InventoryListener.getPlayerList().remove(sen);
+		}			
 	}
 	
-	/*public static Requete joinReq(Player sen, String serverName) {
-		// génération du buffer de demande si en ligne ou non et get nombre de joueur		
+	public static Requete joinReq(Player sen, String serverName) {
+		// gÃ©nÃ©ration du buffer de demande si en ligne ou non et get nombre de joueur		
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		
 		out.writeUTF("joinreq");
 		out.writeUTF(serverName);
 		
 		return new Requete(sen,"BungeeCord", out.toByteArray());			
-	}*/
+	}
 	
-	/*public static void OnJoinResp(Player sen, String serverName, boolean serverState, int plyNb) {
-		/*if(serverState) {	
-			if(plyNb > 20) {
-				// besoin d'etre staff pour rejoindre
-				if(sen.hasPermission("server.staffslot")) {
-					// connection
-					ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
-				}else {
-					//refus
-					sen.sendMessage("refus besoin de la permissions staffslot");
-					if(InventoryListener.getPlayerList().contains(sen))
-						InventoryListener.getPlayerList().remove(sen);
-				}
-			}else if(plyNb > 14) {
-				// besoin d'un grade pour rejoindre
-				if(sen.hasPermission("server.premiumslot") | sen.hasPermission("server.staffslot")) {
-					// connection
-					ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
-				}else {
-					// refus
-					sen.sendMessage("refus besoin de la permissions premiumslot ou staffslot");
-					if(InventoryListener.getPlayerList().contains(sen))
-						InventoryListener.getPlayerList().remove(sen);
-				}
-			}else {
+	public static void OnJoinResp(Player sen, String serverName, boolean serverState, int plyNb) {
+		if(plyNb > 20) {
+			// besoin d'etre staff pour rejoindre
+			if(sen.hasPermission("server.staffslot")) {
 				// connection
-				ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));				
+				ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
+			}else {
+				//refus
+				sen.sendMessage("refus besoin de la permissions staffslot");
+				if(InventoryListener.getPlayerList().contains(sen))
+					InventoryListener.getPlayerList().remove(sen);
+			}
+		}else if(plyNb > 14) {
+			// besoin d'un grade pour rejoindre
+			if(sen.hasPermission("server.premiumslot") | sen.hasPermission("server.staffslot")) {
+				// connection
+				ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
+			}else {
+				// refus
+				sen.sendMessage("refus besoin de la permissions premiumslot ou staffslot");
+				if(InventoryListener.getPlayerList().contains(sen))
+					InventoryListener.getPlayerList().remove(sen);
 			}
 		}else {
-			sen.sendMessage("offline");		// Message à mettre, il faut dire que la requère de connexion n'a pas aboutti car le serveur demandé n'est pas disponible
-			if(InventoryListener.getPlayerList().contains(sen))
-				InventoryListener.getPlayerList().remove(sen);	
-			
-			// update inventaire	
-		}	
-		
-		ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
-	}*/
+			// connection
+			ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));				
+		}
+	}
 	
-	/*public static Requete ConnectReq(Player sen, String serverName) {
+	public static Requete ConnectReq(Player sen, String serverName) {
 		
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		
@@ -127,7 +112,7 @@ public class Requete {
 			InventoryListener.getPlayerList().remove(sen);
 		
 		return new Requete(sen,"BungeeCord", out.toByteArray());		
-	}*/
+	}
 	
 	@Deprecated
 	public static void OnConnectReqOk(Player sen, String serverName) {
