@@ -30,8 +30,8 @@ public class MessagingInput implements PluginMessageListener {
 		    			BanData banData = new BanData();
 		    			banData.setAuthor(in.readUTF());
 		    			banData.setAuthor_UUID(in.readUTF());
-		    			/*
-		    			banData.setGlobal(in.readBoolean());
+		    			
+		    			//banData.setGlobal(in.readBoolean());
 		    			
 		    			banData.setRaison(in.readUTF());
 		    			
@@ -44,7 +44,7 @@ public class MessagingInput implements PluginMessageListener {
 		    			banData.setDay_end(in.readInt());
 		    			banData.setHour_end(in.readInt());
 		    			banData.setMinute_end(in.readInt());
-		    			*/
+		    			
 		    			
 		    			Requete.OnPreJoinResp(player, serverName, serverState, banData);
 		    		}else {
