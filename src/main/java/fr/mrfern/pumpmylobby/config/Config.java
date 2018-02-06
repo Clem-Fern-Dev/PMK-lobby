@@ -1,13 +1,7 @@
 package fr.mrfern.pumpmylobby.config;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-
 import org.bukkit.configuration.Configuration;
-import org.bukkit.configuration.file.YamlConfiguration;
-
 import fr.mrfern.pumpmylobby.Main;
 
 public class Config {
