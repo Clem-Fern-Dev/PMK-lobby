@@ -1,16 +1,14 @@
 package fr.mrfern.pumpmylobby;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Server;
-import org.bukkit.Server.Spigot;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.plugin.messaging.PluginMessageListener;
-
 import fr.mrfern.pumpmylobby.bungee.MessagingInput;
+import fr.mrfern.pumpmylobby.donate.DonateBoss;
 import fr.mrfern.pumpmylobby.inventory.InventoryListener;
 import fr.mrfern.pumpmylobby.porg.MisterPorg;
 import fr.mrfern.pumpmylobby.porg.PorgServerEvent;
@@ -48,6 +46,13 @@ public class Main extends JavaPlugin {
 	    Location loc = new Location(this.getServer().getWorld("spawn"), -537.5, 29, 1372.5);
 	    loc.setYaw(0);
 	    loc.setPitch(0);
+	    
+	    if (!Bukkit.getPluginManager().isPluginEnabled("HolographicDisplays")) {
+			getLogger().severe("*** HolographicDisplays is not installed or not enabled. ***");
+			getLogger().severe("*** This plugin will be disabled. ***");
+		}else {
+			DonateBoss.initDonateHolo();
+		}
 		
 	    ArmorStand armorStand = (ArmorStand) this.getServer().getWorld("spawn").spawnEntity(loc, EntityType.ARMOR_STAND);	
 	    Creeper creeper = (Creeper) this.getServer().getWorld("spawn").spawnEntity(loc, EntityType.CREEPER);

@@ -8,7 +8,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import fr.mrfern.pumpmylobby.server.ServerManager;
-import net.md_5.bungee.api.chat.TextComponent;
 
 public class NavBarManager {
 
