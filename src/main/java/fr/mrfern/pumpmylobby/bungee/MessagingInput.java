@@ -17,41 +17,35 @@ public class MessagingInput implements PluginMessageListener {
 		    
 		    if (subchannel.equals("prejoinresponse")) {
 		    	String serverName = in.readUTF();
-		    	boolean serverState = in.readBoolean();
-		    	
-		    	if(!serverState) {
-		    		// Serveur non dispo
-		    		Requete.OnPreJoinResp(player, serverName, serverState, null);
+		    	// serveur dispo
+		    	boolean isBan = in.readBoolean(); 	// check ban
+		    	if(isBan) {
+		    		// si ban, alors new BanData & envoie réponse
+		    		BanData banData = new BanData();
+		    		banData.setAuthor(in.readUTF());
+		    		banData.setAuthor_UUID(in.readUTF());
+		    			
+		    		//banData.setGlobal(in.readBoolean());
+		    			
+		    		banData.setRaison(in.readUTF());
+		    			
+		    		banData.setDay(in.readInt());
+		    		banData.setHour(in.readInt());
+		    		banData.setMinute(in.readInt());
+		    			
+		    		banData.setYear_end(in.readInt());
+		    		banData.setMonth_end(in.readInt());
+		    		banData.setDay_end(in.readInt());
+		    		banData.setHour_end(in.readInt());
+		    		banData.setMinute_end(in.readInt());
+		    			
+		    			
+		    		Requete.OnPreJoinResp(player, serverName, banData);
 		    	}else {
-		    		// serveur dispo
-		    		boolean isBan = in.readBoolean(); 	// check ban
-		    		if(isBan) {
-		    			// si ban, alors new BanData & envoie réponse
-		    			BanData banData = new BanData();
-		    			banData.setAuthor(in.readUTF());
-		    			banData.setAuthor_UUID(in.readUTF());
-		    			
-		    			//banData.setGlobal(in.readBoolean());
-		    			
-		    			banData.setRaison(in.readUTF());
-		    			
-		    			banData.setDay(in.readInt());
-		    			banData.setHour(in.readInt());
-		    			banData.setMinute(in.readInt());
-		    			
-		    			banData.setYear_end(in.readInt());
-		    			banData.setMonth_end(in.readInt());
-		    			banData.setDay_end(in.readInt());
-		    			banData.setHour_end(in.readInt());
-		    			banData.setMinute_end(in.readInt());
-		    			
-		    			
-		    			Requete.OnPreJoinResp(player, serverName, serverState, banData);
-		    		}else {
-		    			// envoie confirmation réponse joueur non ban
-		    			Requete.OnPreJoinResp(player, serverName, true, null);
-		    		}
+		    		// envoie confirmation réponse joueur non ban
+		    		Requete.OnPreJoinResp(player, serverName, null);
 		    	}
+		    	
 		    	
 		    }else if(subchannel.equals("joinresponse")) {
 		    	String serverName = in.readUTF();
