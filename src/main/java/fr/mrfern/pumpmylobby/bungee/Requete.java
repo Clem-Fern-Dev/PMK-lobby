@@ -52,11 +52,11 @@ public class Requete {
 				
 			// refus de la connection + envoie du message
 			// Message à mettre , il faut dire que la requète de connexion n'a pas aboutti pour le serveur demandé, car le joueur est ban par author (UUID de l'author ), pendant J/H/M , date de déban
-			sen.sendMessage(ChatColor.RED + "║  Demande de connexion annulée ! Vous etes banni de ce serveur :");
-			sen.sendMessage(ChatColor.RED + "║  Bannisseur : " + ChatColor.GOLD + "" + ChatColor.BOLD + banOwner + " " + ChatColor.RESET + "" + ChatColor.RED + "( " + ChatColor.GOLD + banOwnerUUID + " " + ChatColor.RED + ")" );
-			sen.sendMessage(ChatColor.RED + "║  Raison : " + ChatColor.DARK_RED + raison);
-			sen.sendMessage(ChatColor.RED + "║  Temps de bannissement : " + ChatColor.AQUA + day + ChatColor.DARK_AQUA + "D:" + ChatColor.AQUA + hour + ChatColor.DARK_AQUA + "H:"+ ChatColor.AQUA + minute + ChatColor.DARK_AQUA + "M " + ChatColor.DARK_AQUA + "( " + year_end + "\\" + month_end + "\\" + day_end + "\\" + hour_end + "\\" + minute_end + " )" );
-			sen.sendMessage(ChatColor.RED + "║  Demande de débannissment : http://pumpmykins.eu/forum/forumdisplay.php?fid=8");
+			sen.sendMessage(ChatColor.RED + "Demande de connexion annulée ! Vous etes banni de ce serveur :");
+			sen.sendMessage(ChatColor.RED + "Bannisseur : " + ChatColor.GOLD + "" + ChatColor.BOLD + banOwner + " " + ChatColor.RESET + "" + ChatColor.RED + "( " + ChatColor.GOLD + banOwnerUUID + " " + ChatColor.RED + ")" );
+			sen.sendMessage(ChatColor.RED + "Raison : " + ChatColor.DARK_RED + raison);
+			sen.sendMessage(ChatColor.RED + "Temps de bannissement : " + ChatColor.AQUA + day + ChatColor.DARK_AQUA + "D:" + ChatColor.AQUA + hour + ChatColor.DARK_AQUA + "H:"+ ChatColor.AQUA + minute + ChatColor.DARK_AQUA + "M " + ChatColor.DARK_AQUA + "( " + year_end + "\\" + month_end + "\\" + day_end + "\\" + hour_end + "\\" + minute_end + " )" );
+			sen.sendMessage(ChatColor.RED + "Demande de débannissment : "+ ChatColor.UNDERLINE + "" + ChatColor.BLUE +"http://pumpmykins.eu/forum/forumdisplay.php?fid=8");
 			if(InventoryListener.getPlayerList().contains(sen))
 				InventoryListener.getPlayerList().remove(sen);
 		}			
@@ -80,7 +80,7 @@ public class Requete {
 				ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
 			}else {
 				//refus
-				sen.sendMessage(ChatColor.RED + "║  Demande de connexion annulée ! Le serveur est plein.");
+				sen.sendMessage(ChatColor.RED + "Demande de connexion annulée ! Le serveur est plein.");
 				if(InventoryListener.getPlayerList().contains(sen))
 					InventoryListener.getPlayerList().remove(sen);
 			}
@@ -91,7 +91,7 @@ public class Requete {
 				ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
 			}else {
 				// refus
-				sen.sendMessage(ChatColor.RED + "║  Demande de connexion annulée ! Le serveur est plein.");
+				sen.sendMessage(ChatColor.RED + "Demande de connexion annulée ! Le serveur est plein.");
 				if(InventoryListener.getPlayerList().contains(sen))
 					InventoryListener.getPlayerList().remove(sen);
 			}
