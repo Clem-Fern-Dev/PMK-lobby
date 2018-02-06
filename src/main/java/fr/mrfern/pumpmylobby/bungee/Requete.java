@@ -72,26 +72,26 @@ public class Requete {
 		return new Requete(sen,"BungeeCord", out.toByteArray());			
 	}
 	
-	public static void OnJoinResp(Player sen, String serverName, boolean serverState, int plyNb) {
+	public static void OnJoinResp(Player sen, String serverName, int plyNb) {
 		if(plyNb > 20) {
 			// besoin d'etre staff pour rejoindre
-			if(sen.hasPermission("server.staffslot")) {
+			if(sen.hasPermission("server.staffslot." + serverName)) {
 				// connection
 				ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
 			}else {
 				//refus
-				sen.sendMessage("refus besoin de la permissions staffslot");
+				sen.sendMessage(ChatColor.RED + "║  Demande de connexion annulée ! Le serveur est plein.");
 				if(InventoryListener.getPlayerList().contains(sen))
 					InventoryListener.getPlayerList().remove(sen);
 			}
 		}else if(plyNb > 14) {
 			// besoin d'un grade pour rejoindre
-			if(sen.hasPermission("server.premiumslot") | sen.hasPermission("server.staffslot")) {
+			if(sen.hasPermission("server.premiumslot." + serverName) | sen.hasPermission("server.staffslot." + serverName)) {
 				// connection
 				ServerManager.getManager(sen).sendRequete(Requete.ConnectReq(sen, serverName));
 			}else {
 				// refus
-				sen.sendMessage("refus besoin de la permissions premiumslot ou staffslot");
+				sen.sendMessage(ChatColor.RED + "║  Demande de connexion annulée ! Le serveur est plein.");
 				if(InventoryListener.getPlayerList().contains(sen))
 					InventoryListener.getPlayerList().remove(sen);
 			}
