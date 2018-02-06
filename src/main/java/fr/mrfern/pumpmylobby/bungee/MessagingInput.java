@@ -49,14 +49,12 @@ public class MessagingInput implements PluginMessageListener {
 		    	
 		    }else if(subchannel.equals("joinresponse")) {
 		    	String serverName = in.readUTF();
-		    	boolean serverState = in.readBoolean();
 		    	
-		    	if(!serverState) {
-		    		// Serveur non dispo
-		    		//Requete.OnJoinResp(player, serverName, false, 0);
-		    	}else {
-		    		//Requete.OnJoinResp(player, serverName, true, in.readInt());
-		    	}
+		    	int plyCount = in.readInt();	// récupération du nombre de joueur
+		    	
+		    	Requete.OnJoinResp(player, serverName, plyCount);
+		    	
+		    	
 		    }
 		}		
 	}
