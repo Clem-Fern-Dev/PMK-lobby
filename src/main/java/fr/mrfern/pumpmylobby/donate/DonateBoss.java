@@ -24,6 +24,10 @@ public class DonateBoss {
 	    HologramLine line = new TextLine(hologram, text);
 	    hologram.addLine(line);
 	}
+	
+	public void deleteHologram(Hologram hologram) {
+	    holoManager.deleteHologram(hologram);
+	}
 
 	public static HologramManager getHoloManager() {
 		return holoManager;
