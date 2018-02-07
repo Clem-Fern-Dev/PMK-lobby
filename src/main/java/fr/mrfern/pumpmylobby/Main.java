@@ -7,6 +7,10 @@ import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.EntityType;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import com.sainttx.holograms.api.HologramManager;
+import com.sainttx.holograms.api.HologramPlugin;
+
 import fr.mrfern.pumpmylobby.bungee.MessagingInput;
 import fr.mrfern.pumpmylobby.donate.DonateBoss;
 import fr.mrfern.pumpmylobby.inventory.InventoryListener;
@@ -19,6 +23,9 @@ public class Main extends JavaPlugin {
 
 	private static Server server;
 	private static Main main;
+	
+	@SuppressWarnings("unused")
+	private HologramManager hologramManager;
 	
 	@Override
 	public void onLoad() {
@@ -43,25 +50,21 @@ public class Main extends JavaPlugin {
 	    
 	    getServer().getPluginManager().registerEvents(new InventoryListener(), this);
 	    
-	    Location loc = new Location(this.getServer().getWorld("spawn"), -537.5, 29, 1372.5);
-	    loc.setYaw(0);
-	    loc.setPitch(0);
+	   // Location loc = new Location(this.getServer().getWorld("spawn"), -537.5, 29, 1372.5);
+	   // loc.setYaw(0);
+	   // loc.setPitch(0);
 	    
-	    if (!Bukkit.getPluginManager().isPluginEnabled("HolographicDisplays")) {
-			getLogger().severe("*** HolographicDisplays is not installed or not enabled. ***");
-			getLogger().severe("*** This plugin will be disabled. ***");
-		}else {
-			DonateBoss.initDonateHolo();
-		}
+	    DonateBoss.donateEnable(getPlugin(HologramPlugin.class).getHologramManager());	    
+	    
 		
-	    ArmorStand armorStand = (ArmorStand) this.getServer().getWorld("spawn").spawnEntity(loc, EntityType.ARMOR_STAND);	
+	   /* ArmorStand armorStand = (ArmorStand) this.getServer().getWorld("spawn").spawnEntity(loc, EntityType.ARMOR_STAND);	
 	    Creeper creeper = (Creeper) this.getServer().getWorld("spawn").spawnEntity(loc, EntityType.CREEPER);
 	    NoIA.setAiEnabled(creeper, false);
 	    //armorStand.setPassenger(creeper);
 	    armorStand.setCustomNameVisible(true);
 	    armorStand.setGravity(false);
 	    armorStand.setHealth(20);
-	    Annimation.initTask(this, armorStand);
+	    Annimation.initTask(this, armorStand);*/
 	    
 	}
 	
