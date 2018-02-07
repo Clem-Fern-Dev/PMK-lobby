@@ -4,6 +4,8 @@ import org.bukkit.Location;
 
 import com.sainttx.holograms.api.Hologram;
 import com.sainttx.holograms.api.HologramManager;
+import com.sainttx.holograms.api.line.HologramLine;
+import com.sainttx.holograms.api.line.TextLine;
 
 public class DonateBoss {
 	
@@ -16,6 +18,11 @@ public class DonateBoss {
 	public void createHologram(String id, Location location) {
 	    Hologram hologram = new Hologram(id, location);
 	    holoManager.addActiveHologram(hologram); // Tells the plugin a new Hologram was added
+	}
+	
+	public void addTextLine(Hologram hologram, String text) {
+	    HologramLine line = new TextLine(hologram, text);
+	    hologram.addLine(line);
 	}
 
 	public static HologramManager getHoloManager() {
