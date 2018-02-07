@@ -28,6 +28,11 @@ public class DonateBoss {
 	public void deleteHologram(Hologram hologram) {
 	    holoManager.deleteHologram(hologram);
 	}
+	
+	public void hideHologram(Hologram hologram) {
+	    hologram.despawn();
+	    holoManager.removeActiveHologram(hologram);
+	}
 
 	public static HologramManager getHoloManager() {
 		return holoManager;
