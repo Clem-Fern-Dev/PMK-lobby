@@ -20,7 +20,7 @@ public class DonateBoss {
 
 	public static void donateEnable(HologramManager hologramManager) {
 		holoManager = hologramManager;	
-		holoLoc = new Location(Main.getServerInfo().getWorld(""), 0, 0,0);
+		holoLoc = new Location(Main.getServerInfo().getWorld("spawn"), -537.5, 0,1372.4);
 	}
 	
 	public static void donateDisable(Hologram hologram) {
