@@ -1,10 +1,7 @@
 package fr.mrfern.pumpmylobby;
 
-import java.io.File;
-
 import org.bukkit.Server;
 import org.bukkit.configuration.Configuration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.sainttx.holograms.api.HologramManager;
