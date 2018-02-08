@@ -21,6 +21,8 @@ public class DonateBoss {
 	public static void donateEnable(HologramManager hologramManager) {
 		holoManager = hologramManager;	
 		holoLoc = new Location(Main.getServerInfo().getWorld("spawn"), -537.5, 0,1372.4);
+		
+		holo = createHologram(UUID.randomUUID().toString(), holoLoc);
 	}
 	
 	public static void donateDisable(Hologram hologram) {
@@ -29,7 +31,7 @@ public class DonateBoss {
 	}
 	
 	public static void InitHologram(Hologram holo) {
-		holo = createHologram(UUID.randomUUID().toString(), holoLoc);
+		
 	}
 	
 	public static Hologram createHologram(String id, Location location) {
