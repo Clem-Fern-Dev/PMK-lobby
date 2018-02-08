@@ -43,16 +43,14 @@ public void initDataFolder() {
 			YamlConfiguration conf = new YamlConfiguration();
 			
 			try {
-				conf.load(file);
+				conf.load(file);	// chargement du fichier
 				return conf;
 			} catch (IOException | InvalidConfigurationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			return null;
 		}
-		
 		return null;		
 	}
 
