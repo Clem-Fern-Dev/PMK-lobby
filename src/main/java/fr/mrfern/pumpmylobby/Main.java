@@ -1,22 +1,21 @@
 package fr.mrfern.pumpmylobby;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
+import java.io.File;
+
 import org.bukkit.Server;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Creeper;
-import org.bukkit.entity.EntityType;
+import org.bukkit.configuration.Configuration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.sainttx.holograms.api.HologramManager;
 import com.sainttx.holograms.api.HologramPlugin;
 
 import fr.mrfern.pumpmylobby.bungee.MessagingInput;
+import fr.mrfern.pumpmylobby.config.Config;
 import fr.mrfern.pumpmylobby.donate.DonateBoss;
 import fr.mrfern.pumpmylobby.inventory.InventoryListener;
 import fr.mrfern.pumpmylobby.porg.MisterPorg;
 import fr.mrfern.pumpmylobby.porg.PorgServerEvent;
-import fr.mrfern.pumpmylobby.server.NoIA;
 
 
 public class Main extends JavaPlugin {
@@ -41,7 +40,28 @@ public class Main extends JavaPlugin {
 		//inti bungee com
 		
 		// init config
-		saveDefaultConfig();
+		Config conf = Config.getConfig(this);
+		
+		conf.initDataFolder();
+	    conf.initAndGetFile("config.yml");	// init config default file
+	    
+	    Configuration bddConf;
+		try {
+			// get instance configuration config.yml
+			bddConf = conf.getConfiguration("config.yml");
+			
+			//get url / user / mdp dans config.yml
+			String url = bddConf.getString("ban.bdd_url");
+	        String user = bddConf.getString("ban.bdd_user");
+	        String mdp = bddConf.getString("ban.bdd_mdp");
+	        String base = bddConf.getString("ban.bdd_base");
+	        
+	        //initialisation de la class MySQLConnector
+	        conf.initMySQLConnect(url,user,mdp,base);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//event
 		
