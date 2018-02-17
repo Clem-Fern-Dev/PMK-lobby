@@ -3,6 +3,11 @@
   <groupId>io.github.clem_fern</groupId>
   <artifactId>pumpmylobby</artifactId>
   <name>PumpMyLobby</name>
+  
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
 
 	<repositories>
     	<repository>
