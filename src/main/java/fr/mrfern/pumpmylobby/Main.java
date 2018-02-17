@@ -67,6 +67,8 @@ public class Main extends JavaPlugin {
 	    
 	    getServer().getPluginManager().registerEvents(new InventoryListener(), this);
 	    
+	    getServer().getPluginManager().registerEvents(new ChatFormater(), this);
+	    
 	   // Location loc = new Location(this.getServer().getWorld("spawn"), -537.5, 29, 1372.5);
 	   // loc.setYaw(0);
 	   // loc.setPitch(0);
