@@ -50,7 +50,7 @@ public class ServerManager {
 						MuteData.setAuthor(muteRS.getString("author_name")); 	// set author name dans mute Data
 						MuteData.setAuthor_UUID(muteRS.getString("author_UUID")); 	// set author UUID dans mute Data
 						
-						MuteData.setmuteType(muteType); 	// set mute type dans mute Data
+						MuteData.setMuteType(muteType); 	// set mute type dans mute Data
 						
 						MuteData.setRaison(muteRS.getString("raison")); 	// set raison dans mute Data
 						
@@ -91,7 +91,7 @@ public class ServerManager {
 		this.p = p;
 	}
 	
-	public boolean isBan(String serverName) {
+	public boolean isMute(String serverName) {
 		for (Entry<String, MuteData> entry : MuteDataList.entrySet()) {	//parcours de la liste de mute
 			if(entry.getKey().equals(serverName) | entry.getKey().equals("global")) {	// test nom du serveur ou mute global
 				return true;
@@ -100,7 +100,7 @@ public class ServerManager {
 		return false;
 	}
 	
-	public boolean getBanIsGlobal() {
+	public boolean getMuteIsGlobal() {
 		for (Entry<String, MuteData> entry : MuteDataList.entrySet()) {	//parcours de la liste de mute
 			if(entry.getKey().equals("global")) {	// test mute global
 				return true;

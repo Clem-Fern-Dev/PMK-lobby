@@ -5,6 +5,8 @@ public class MuteData {
 	private String author;
 	private String author_UUID;
 	
+	private String muteType;
+	
 	private String raison;
 	
 	private int year_end;
@@ -90,6 +92,12 @@ public class MuteData {
 	}
 	public void setEnd(boolean end) {
 		this.end = end;
+	}
+	public String getMuteType() {
+		return muteType;
+	}
+	public void setMuteType(String muteType) {
+		this.muteType = muteType;
 	}
 	
 }
