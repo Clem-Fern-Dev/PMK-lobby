@@ -4,12 +4,8 @@ import org.bukkit.Server;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.sainttx.holograms.api.HologramManager;
-import com.sainttx.holograms.api.HologramPlugin;
-
 import fr.mrfern.pumpmylobby.bungee.MessagingInput;
 import fr.mrfern.pumpmylobby.config.Config;
-import fr.mrfern.pumpmylobby.donate.DonateBoss;
 import fr.mrfern.pumpmylobby.inventory.InventoryListener;
 import fr.mrfern.pumpmylobby.porg.MisterPorg;
 import fr.mrfern.pumpmylobby.porg.PorgServerEvent;
@@ -20,8 +16,8 @@ public class Main extends JavaPlugin {
 	private static Server server;
 	private static Main main;
 	
-	@SuppressWarnings("unused")
-	private HologramManager hologramManager;
+	//@SuppressWarnings("unused")
+	//private HologramManager hologramManager;
 	
 	@Override
 	public void onLoad() {
@@ -73,7 +69,7 @@ public class Main extends JavaPlugin {
 	   // loc.setYaw(0);
 	   // loc.setPitch(0);
 	    
-	    DonateBoss.donateEnable(getPlugin(HologramPlugin.class).getHologramManager());	    
+	   // DonateBoss.donateEnable(getPlugin(HologramPlugin.class).getHologramManager());	    
 	    
 		
 	   /* ArmorStand armorStand = (ArmorStand) this.getServer().getWorld("spawn").spawnEntity(loc, EntityType.ARMOR_STAND);	
@@ -89,7 +85,7 @@ public class Main extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-		Annimation.getArmorS().remove();
+		//Annimation.getArmorS().remove();
 		new PorgServerEvent().OnServerStopEvent(new MisterPorg(this, "MzgyNTc4Mzg4MDY3NTQ5MTg0.DQdApA.zxYqzecf2pn3HMt6rRZGbcibggs","387326167499276292"));
 	}
 	
