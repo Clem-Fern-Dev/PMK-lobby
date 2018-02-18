@@ -220,4 +220,9 @@ public class ServerManager {
 		p.sendPluginMessage(Main.getMain(), Req.getChannel(), Req.getBuff());
 	}
 
+	public boolean getServerState(String string) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 }
