@@ -20,6 +20,8 @@
     		<name>jcenter-bintray</name>
     		<url>http://jcenter.bintray.com</url>
 		</repository>
+		
+		
     	
 	</repositories>
 	
@@ -44,6 +46,13 @@
     		<artifactId>JDA</artifactId>
     		<version>3.3.0_260</version>
 		</dependency>
+		
+    	<dependency>
+        	<groupId>me.lucko.luckperms</groupId>
+        	<artifactId>luckperms-api</artifactId>
+        	<version>4.0</version>
+        	<scope>provided</scope>
+   		 </dependency>
 		
 	</dependencies>
 	
