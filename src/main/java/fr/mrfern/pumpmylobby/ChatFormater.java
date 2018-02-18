@@ -40,5 +40,13 @@ public class ChatFormater implements Listener{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public static RegisteredServiceProvider<LuckPermsApi> getProvider() {
+		return provider;
+	}
+
+	public static void setProvider(RegisteredServiceProvider<LuckPermsApi> provider) {
+		ChatFormater.provider = provider;
+	}
 	
 }
