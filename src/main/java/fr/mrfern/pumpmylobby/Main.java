@@ -86,7 +86,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		//Annimation.getArmorS().remove();
-		new PorgServerEvent().OnServerStopEvent(new MisterPorg(this, "MzgyNTc4Mzg4MDY3NTQ5MTg0.DQdApA.zxYqzecf2pn3HMt6rRZGbcibggs","387326167499276292"));
+		new PorgServerEvent().OnServerStopEvent(new MisterPorg(this, "#","387326167499276292"));
 	}
 	
 	public static Server getServerInfo() {
