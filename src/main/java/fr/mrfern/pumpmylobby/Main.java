@@ -28,7 +28,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		// Init discord message start
-		new PorgServerEvent().OnServerStartEvent(new MisterPorg(this, "MzgyNTc4Mzg4MDY3NTQ5MTg0.DQdApA.zxYqzecf2pn3HMt6rRZGbcibggs","387326167499276292"));
+		new PorgServerEvent().OnServerStartEvent(new MisterPorg(this, "#","387326167499276292"));
 		
 		//inti bungee com
 		
